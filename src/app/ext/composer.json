@@ -19,7 +19,7 @@
     "symfony/twig-bundle": "3.4.*",
     "symfony/twig-bridge": "3.4.*",
     "symfony/debug-bundle": "3.4.*",
-    "doctrine/doctrine-bundle": "1.6.*",
+    "doctrine/doctrine-bundle": "1.8.*",
     "sensio/generator-bundle": "3.0.*",
     "sensio/distribution-bundle": "5.0.*",
     "symfony/web-profiler-bundle": "3.4.*",

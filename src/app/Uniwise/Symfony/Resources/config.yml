@@ -90,3 +90,7 @@ services:
     tags: ['controller.service_arguments']
     calls:
       - [setContainer, ["@service_container"]]
+
+  Uniwise\Doctrine\Entity\:
+    resource: '/app/Uniwise/Doctrine/Entity/*'
+    public: true
