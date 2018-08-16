@@ -14,6 +14,24 @@ Mac:
 
 Linux: 
 
+* Docker:  
+```
+sudo su -c 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -'
+sudo add-apt-repository "deb \[arch=amd64\] https://download.docker.com/linux/ubuntu $(lsb_release -cs) test"
+sudo apt-get -y update
+sudo sudo apt-get install -y docker-ce
+sudo update-rc.d docker enable
+sudo groupadd docker
+sudo gpasswd -a ${USER} docker
+sudo service docker restart
+```
+
+* Docker-compose:  
+```
+sudo curl -L -o /usr/local/bin/docker-compose $(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'browser_' | cut -d\" -f4 | grep Linux | grep -v sha256)
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
 ##Opsætning: 
 1. Hent projekt fra git (git clone git@github.com:UNIwise/backend-assignment.git)
 2. Gå ind i src mappen og kør: Make build
@@ -23,7 +41,7 @@ Linux:
 ##Opgaven:
 Opgaverne bør løses i kronologisk rækkefølge, hvor sværhedsgraden vil variere. 
 
-###Opgaver 1: Liste alle biler i databasen. 
+###Opgaver 1: List alle biler i databasen. 
 
 Ved at kalde endpointet: http://localhost/car/all skal alle biler hentes ud af databasen og returneres som JSON. Det er vigtigt at de entities der hentes fra databasen ikke blot returneres direkte, men bliver puttet ind i en form for respons objekt. 
 

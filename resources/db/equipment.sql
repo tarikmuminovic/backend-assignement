@@ -1,4 +1,4 @@
-INSERT INTO `equipment` (`id`, `name`)
+INSERT IGNORE INTO `equipment` (`id`, `name`)
 VALUES
 	(1, 'Automatgear'),
 	(2, 'Fartpilot'),
@@ -9,7 +9,7 @@ VALUES
 	(7, '2 zonet klimaanlæg'),
 	(8, 'El-bagklap');
 
-INSERT INTO `carEquipment` (`id`, `carId`, `equipmentId`)
+INSERT IGNORE INTO `carEquipment` (`id`, `carId`, `equipmentId`)
 VALUES
 	(1, 1),
 	(1, 6),

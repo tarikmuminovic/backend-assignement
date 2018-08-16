@@ -1,4 +1,4 @@
-INSERT INTO `car` (`id`, `make`, `model`, `fuel`, `color`)
+INSERT IGNORE INTO `car` (`id`, `make`, `model`, `fuel`, `color`)
 VALUES
 	(1, 'Audi', 'A4', 'Benzin', 'Sort'),
 	(2, 'Audi', 'A4', 'Benzin', 'Sølv'),
