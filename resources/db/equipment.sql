@@ -1,0 +1,40 @@
+INSERT INTO `equipment` (`id`, `name`)
+VALUES
+	(1, 'Automatgear'),
+	(2, 'Fartpilot'),
+	(3, 'Dynamisk fartpilot'),
+	(4, 'Alarmsystem'),
+	(5, 'Bakkamera'),
+	(6, 'Blind spot detect'),
+	(7, ' 2 zonet klimaanlæg'),
+	(8, 'El-bagklap');
+
+INSERT INTO `carEquipment` (`id`, `carId`, `equipmentId`)
+VALUES
+	(1, 1, 1),
+	(2, 1, 6),
+	(3, 1, 8),
+	(4, 2, 4),
+	(5, 2, 3),
+	(6, 3, 5),
+	(7, 4, 2),
+	(8, 4, 4),
+	(9, 5, 6),
+	(10, 5, 7),
+	(11, 5, 8),
+	(12, 6, 1),
+	(13, 6, 3),
+	(14, 6, 4),
+	(15, 6, 5),
+	(16, 6, 6),
+	(17, 6, 7),
+	(18, 6, 8),
+	(19, 7, 1),
+	(20, 7, 3),
+	(21, 8, 4),
+	(22, 8, 5),
+	(23, 9, 4),
+	(24, 11, 5),
+	(25, 11, 6),
+	(26, 12, 1),
+	(27, 12, 7);

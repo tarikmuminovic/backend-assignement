@@ -20,6 +20,6 @@ class CarService {
     }
 
     public function getCars() {
-
+        return [];
     }
 }
