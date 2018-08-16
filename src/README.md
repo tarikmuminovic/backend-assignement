@@ -40,7 +40,7 @@ Opret de to entities: Equipment og CarEquipment
 Opdatere deres definition, så de matcher det udleverede data og sørg for at relationerne er beskrevet imellem de tre objekter. Det skal være muligt for en bil at have mere end et udstyr tilknyttet og samtidig skal et udstyr kunne tilknyttes flere biler. 
 
 Der kan læses om mapping på: 
-https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html
+https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#many-to-many-unidirectional
 
 (Her udleveres queries til at indsætte data i databasen, så det bare at doctrine delen der skal laves)
 
