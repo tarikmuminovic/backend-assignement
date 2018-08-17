@@ -5,12 +5,18 @@ Opgaven går ud på at vise basal forståelse for nogle af de frameworks vi anve
 Kort fortalt bruges Doctrine til at beskrive databasen entities og håndtere kommunikationen til databasen. Symfony anvendes til at opbygge API’er og services. 
 
 For at løse opgaven skal følgende være installeret på computeren: 
+```
 Docker
 Docker-compose
+```
 
 ##Installation af Docker:
 Mac:
- “Docker for Mac” kan downloades fra: https://docs.docker.com/docker-for-mac/install/
+
+“Docker for Mac” kan downloades fra: 
+[https://docs.docker.com/docker-for-mac/install/](https://docs.docker.com/docker-for-mac/install/)
+
+"Docker for Mac" indeholder både Docker og Docker-compose 
 
 Linux: 
 
@@ -34,35 +40,46 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 ##Opsætning: 
 1. Hent projekt fra git (git clone git@github.com:UNIwise/backend-assignment.git)
-2. Gå ind i src mappen og kør: Make build
-3. Kør: Make run
- 
-
+2. Gå ind i src mappen og kør: make build
+3. Kør: make run
+4. Åben [http://localhost/car/all](http://localhost/car/all) og se at der returneres "Not implemented yet"
+  
 ##Opgaven:
-Opgaverne bør løses i kronologisk rækkefølge, hvor sværhedsgraden vil variere. 
+Opgaverne bør løses i kronologisk rækkefølge, hvor sværhedsgraden vil variere.
+
+De tre filer som der primært arbejdes med er:
+- Symfony/Bundle/ApiBundle/Controller/Car/CarController.php
+- Symfony/Service/Car/CarService.php
+- Doctrine/Entity/CarRepository.php
+
+De tre filer repræsentere samlet en MVC arkitektur.  
 
 ###Opgaver 1: List alle biler i databasen. 
 
-Ved at kalde endpointet: http://localhost/car/all skal alle biler hentes ud af databasen og returneres som JSON. Det er vigtigt at de entities der hentes fra databasen ikke blot returneres direkte, men bliver puttet ind i en form for respons objekt. 
+Ved at kalde endpointet: [http://localhost/car/all](http://localhost/car/all) skal alle biler hentes ud af databasen og returneres som JSON. Det er vigtigt at de entities der hentes fra databasen ikke blot returneres direkte, men bliver puttet ind i en form for respons objekt. 
 
-Husk at det er servicen der tager sig af at hente data ud af databasen og mappe det om til respons objekter. 
+Husk at det er servicen der sammen med et repository tager sig af at hente data ud af databasen. 
 
 ###Opgave 2: Tilføj ekstra endpoint til controlleren, hvor det er muligt at filtrere på bilmærker. 
 
-Tilføj endpointet http://localhost/car/filtered til controlleren og gøre det muligt at filtrere på bilmærker.
+Tilføj endpointet [http://localhost/car/filtered](http://localhost/car/filtered) til controlleren og gøre det muligt at filtrere på bilmærker.
 
 ###Opgave 3. Udvidelse af doctrine entities. 
-Tilføje ekstra tabel til databasen med udstyr og forbind de to entities. Opdatere response til også at inkludere udstyr. 
+Brug doctrine til at tilføje ekstra tabeller til databasen, som indeholder udstyr og som binder udstyr og en bil sammen. Derefter skal responset opdateres til også at indeholde udstyr. 
 
-Opret de to entities: Equipment og CarEquipment 
-Opdatere deres definition, så de matcher det udleverede data og sørg for at relationerne er beskrevet imellem de tre objekter. Det skal være muligt for en bil at have mere end et udstyr tilknyttet og samtidig skal et udstyr kunne tilknyttes flere biler. 
+Hint: 
+1) Opret entitien: Equipment. 
+2) Opdatere dens definition, så den matcher definitionen i filen resources/db/equipment.sql og sørg for at relationerne er beskrevet imellem Car og Equipment objekterne. Det skal være muligt for en bil at have mere end et udstyr tilknyttet og samtidig skal et udstyr kunne tilknyttes flere biler. 
 
 Der kan læses om mapping på: 
 https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#many-to-many-unidirectional
 
-(Her udleveres queries til at indsætte data i databasen, så det bare at doctrine delen der skal laves)
+Når de to entities er oprettet, skal følgende kommandoer køres for at tabellerene oprettes i databasen:
+1) Make run (sørger for at tilføje de nye tabeller i databasen. Hvis det går godt kan to nye tabeller ses i database (equipment og carEquipment) med korrekte relationer)
+2) Make import-equipment (Tilføjer data til databasen)
 
-###Opgave 4. Givet et bil Id og udstyrs Id, skal det være muligt at tilføje ekstra udstyr til en bil. 
+###Opgave 4. Gør det muligt at tilføje ekstra udstyr til en bil. 
+Her er det i orden at antage at id'erne på bilerne og udstyr kendes og derfor blot skal sendes med. 
 
-Tilføj post endpointet, der givet Id’er på en bil og et udstyr opretter en forbindelse imellem dem. 
+Tilføj et endpoint, der givet Id’er på en bil og et udstyr opretter en forbindelse imellem dem. 
 
