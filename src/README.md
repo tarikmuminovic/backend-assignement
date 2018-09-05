@@ -22,8 +22,10 @@ Linux:
 
 * Docker:  
 ```
+sudo apt-get update
+sudo apt-get install -y curl
 sudo su -c 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -'
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) test"
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt-get -y update
 sudo sudo apt-get install -y docker-ce
 sudo update-rc.d docker enable
@@ -38,8 +40,9 @@ sudo curl -L -o /usr/local/bin/docker-compose $(curl -s https://api.github.com/r
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
+
 ##Opsætning: 
-1. Hent projekt fra git (git clone git@github.com:UNIwise/backend-assignment.git)
+1. Hent projekt fra git (git clone https://github.com/UNIwise/backend-assignment.git)
 2. Gå ind i src mappen og kør: make build
 3. Kør: make run
 4. Åben [http://localhost/car/all](http://localhost/car/all) og se at der returneres "Not implemented yet"
