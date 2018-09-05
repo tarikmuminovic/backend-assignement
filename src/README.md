@@ -1,4 +1,4 @@
-#UNIwise backend opgave:
+# UNIwise backend opgave:
 
 Opgaven går ud på at vise basal forståelse for nogle af de frameworks vi anvender hos UNIwise. Mere specifik er det de to frameworks: Doctrine og Symfony. 
 
@@ -10,7 +10,7 @@ Docker
 Docker-compose
 ```
 
-##Installation af Docker:
+## Installation af Docker:
 Mac:
 
 “Docker for Mac” kan downloades fra: 
@@ -31,7 +31,9 @@ sudo sudo apt-get install -y docker-ce
 sudo update-rc.d docker enable
 sudo groupadd docker
 sudo gpasswd -a ${USER} docker
-sudo service docker restart
+echo '{"storage-driver": "devicemapper"}' | sudo tee /etc/docker/daemon.json
+sudo systemctl restart docker
+sudo chown ${USER}:${USER} /var/run/docker.sock 
 ```
 
 * Docker-compose:  
