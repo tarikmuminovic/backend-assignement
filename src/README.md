@@ -18,7 +18,7 @@ Mac:
 
 "Docker for Mac" indeholder både Docker og Docker-compose 
 
-Linux: 
+Ubuntu: 
 
 * Docker:  
 ```
@@ -40,6 +40,10 @@ sudo curl -L -o /usr/local/bin/docker-compose $(curl -s https://api.github.com/r
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
+* Make:
+```
+sudo apt-get install -y make
+```
 
 ##Opsætning: 
 1. Hent projekt fra git (git clone https://github.com/UNIwise/backend-assignment.git)
