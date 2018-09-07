@@ -53,7 +53,7 @@ sudo apt-get install -y make
 3. Kør: make run
 4. Åben [http://localhost/car/all](http://localhost/car/all) og se at der returneres "Not implemented yet"
   
-##Opgaven:
+## Opgaven:
 Opgaverne bør løses i kronologisk rækkefølge, hvor sværhedsgraden vil variere.
 
 De tre filer som der primært arbejdes med er:
@@ -63,17 +63,17 @@ De tre filer som der primært arbejdes med er:
 
 De tre filer repræsentere samlet en MVC arkitektur.  
 
-###Opgaver 1: List alle biler i databasen. 
+### Opgaver 1: List alle biler i databasen. 
 
 Ved at kalde endpointet: [http://localhost/car/all](http://localhost/car/all) skal alle biler hentes ud af databasen og returneres som JSON. Det er vigtigt at de entities der hentes fra databasen ikke blot returneres direkte, men bliver puttet ind i en form for respons objekt. 
 
 Husk at det er servicen der sammen med et repository tager sig af at hente data ud af databasen. 
 
-###Opgave 2: Tilføj ekstra endpoint til controlleren, hvor det er muligt at filtrere på bilmærker. 
+### Opgave 2: Tilføj ekstra endpoint til controlleren, hvor det er muligt at filtrere på bilmærker. 
 
 Tilføj endpointet [http://localhost/car/filtered](http://localhost/car/filtered) til controlleren og gøre det muligt at filtrere på bilmærker.
 
-###Opgave 3. Udvidelse af doctrine entities. 
+### Opgave 3. Udvidelse af doctrine entities. 
 Brug doctrine til at tilføje ekstra tabeller til databasen, som indeholder udstyr og som binder udstyr og en bil sammen. Derefter skal responset opdateres til også at indeholde udstyr. 
 
 Hint: 
@@ -87,7 +87,7 @@ Når de to entities er oprettet, skal følgende kommandoer køres for at tabelle
 1) Make run (sørger for at tilføje de nye tabeller i databasen. Hvis det går godt kan to nye tabeller ses i database (equipment og carEquipment) med korrekte relationer)
 2) Make import-equipment (Tilføjer data til databasen)
 
-###Opgave 4. Gør det muligt at tilføje ekstra udstyr til en bil. 
+### Opgave 4. Gør det muligt at tilføje ekstra udstyr til en bil. 
 Her er det i orden at antage at id'erne på bilerne og udstyr kendes og derfor blot skal sendes med. 
 
 Tilføj et endpoint, der givet Id’er på en bil og et udstyr opretter en forbindelse imellem dem. 
