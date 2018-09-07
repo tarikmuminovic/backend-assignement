@@ -47,7 +47,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo apt-get install -y make
 ```
 
-##Opsætning: 
+## Opsætning: 
 1. Hent projekt fra git (git clone https://github.com/UNIwise/backend-assignment.git)
 2. Gå ind i src mappen og kør: make build
 3. Kør: make run
