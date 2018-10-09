@@ -9,7 +9,7 @@ VALUES
 	(7, '2 zonet klimaanlæg'),
 	(8, 'El-bagklap');
 
-INSERT IGNORE INTO `carEquipment` (`id`, `carId`, `equipmentId`)
+INSERT IGNORE INTO `carEquipment` (`carId`, `equipmentId`)
 VALUES
 	(1, 1),
 	(1, 6),
