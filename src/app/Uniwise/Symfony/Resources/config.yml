@@ -17,15 +17,8 @@ framework:
 
   ide: sublime
 
-  templating:
-    engines: ['twig']
-
 sensio_framework_extra:
   request: { converters: true }
-
-twig:
-  debug: "%kernel.debug%"
-  strict_variables: "%kernel.debug%"
 
 doctrine:
   dbal:
@@ -50,12 +43,6 @@ doctrine:
             dir: /app/Uniwise/Doctrine/Entity
             prefix: Uniwise\Doctrine\Entity
             is_bundle: false
-
-jms_di_extra:
-  locations:
-    all_bundles: false
-    bundles: [ApiBundle]
-    directories: [/app/Uniwise/Symfony/Service, /app/Uniwise/Doctrine]
 
 fos_rest:
   serializer:
