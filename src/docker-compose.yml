@@ -20,6 +20,7 @@ services:
             DATABASE_URL: "mysql://wiseflow:test@db/wiseflow"
         volumes:
           - ./app:/app/
+          - ../cache:/var/cache/symfony
     nginx:
         build: 
             context: .
