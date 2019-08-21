@@ -1,8 +1,8 @@
 # UNIwise backend opgave:
 
-Opgaven går ud på at vise basal forståelse for nogle af de frameworks vi anvender hos UNIwise. Mere specifik er det de to frameworks: Doctrine og Symfony. 
+Opgaven går ud på at vise basal forståelse for nogle af de frameworks vi anvender hos UNIwise. Mere specifikt er det to PHP frameworks: Doctrine og Symfony. 
 
-Kort fortalt bruges Doctrine til at beskrive databasen entities og håndtere kommunikationen til databasen. Symfony anvendes til at opbygge API’er og services. 
+Kort fortalt bruges Doctrine til at beskrive database entities og håndtere kommunikationen til databasen. Symfony anvendes til at opbygge API’er og services. 
 
 For at løse opgaven skal følgende være installeret på computeren: 
 ```
@@ -48,47 +48,33 @@ sudo apt-get install -y make
 ```
 
 ## Opsætning: 
-1. Hent projekt fra git (git clone https://github.com/UNIwise/backend-assignment.git)
+1. Hent projektet fra git (git clone https://github.com/UNIwise/backend-assignment.git)
 2. Gå ind i src mappen og kør: make build
 3. Kør: make run
-4. Åben [http://localhost/car/all](http://localhost/car/all) og se at der returneres "Not implemented yet"
+4. Åben [http://localhost/car](http://localhost/car) det er her opgaven begynder :)
   
 ## Opgaven:
-Opgaverne bør løses i kronologisk rækkefølge, hvor sværhedsgraden vil variere.
 
-De tre filer som der primært arbejdes med er:
-- Symfony/Bundle/ApiBundle/Controller/Car/CarController.php
-- Symfony/Service/Car/CarService.php
-- Doctrine/Entity/CarRepository.php
+Opgaven går ud på at lave REST endpoints til at arbejde med biler.
+Bilerne skal have mærke, model, farve, benzin-niveau og en liste af ekstra udstyr.
 
-De tre filer repræsentere samlet en MVC arkitektur.  
+Der skal være endpoints til at liste alle bilerne fra databasen.
+Lave en filtreret visning af bilerne. Det kunne fx være en filtrering på et givet equipment eller lignende 
+samt muligheden for at tilføje og fjerne ekstra udstyr fra bilerne.
 
-### Opgaver 1: List alle biler i databasen. 
+Enpoints skal returnere json og skal kunne testes via fx. postman. Det er ikke nødvendigt at lave en ui til opgaven da fokus er på backenden.
 
-Ved at kalde endpointet: [http://localhost/car/all](http://localhost/car/all) skal alle biler hentes ud af databasen og returneres som JSON. Det er vigtigt at de entities der hentes fra databasen ikke blot returneres direkte, men bliver puttet ind i en form for respons objekt. 
-
-Husk at det er servicen der sammen med et repository tager sig af at hente data ud af databasen. 
-
-### Opgave 2: Tilføj ekstra endpoint til controlleren, hvor det er muligt at filtrere på bilmærker. 
-
-Tilføj endpointet [http://localhost/car/filtered](http://localhost/car/filtered) til controlleren og gøre det muligt at filtrere på bilmærker.
-
-### Opgave 3. Udvidelse af doctrine entities. 
-Brug doctrine til at tilføje ekstra tabeller til databasen, som indeholder udstyr og som binder udstyr og en bil sammen. Derefter skal responset opdateres til også at indeholde udstyr. 
-
-Hint: 
-1) Opret entitien: Equipment. 
-2) Opdatere dens definition, så den matcher definitionen i filen resources/db/equipment.sql og sørg for at relationerne er beskrevet imellem Car og Equipment objekterne. Det skal være muligt for en bil at have mere end et udstyr tilknyttet og samtidig skal et udstyr kunne tilknyttes flere biler. 
+Der er en mysql database i docker instansen som kan nåes på localhost:3306 med bruger wiseflow og kode test.
+Brug doctrine til at beskrive entities i databasen.
 
 Der kan læses om mapping på: 
 https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#many-to-many-unidirectional
 
-Når de to entities er oprettet, skal følgende kommandoer køres for at tabellerene oprettes i databasen:
-1) Make run (sørger for at tilføje de nye tabeller i databasen. Hvis det går godt kan to nye tabeller ses i database (equipment og carEquipment) med korrekte relationer)
-2) Make import-equipment (Tilføjer data til databasen)
+Når entities er oprettet, skal følgende kommando køres for at tabellerene oprettes/opdateres i databasen:
+1) Make run (sørger for at tilføje de nye tabeller i databasen).
 
-### Opgave 4. Gør det muligt at tilføje ekstra udstyr til en bil. 
-Her er det i orden at antage at id'erne på bilerne og udstyr kendes og derfor blot skal sendes med. 
-
-Tilføj et endpoint, der givet Id’er på en bil og et udstyr opretter en forbindelse imellem dem. 
-
+## Ekstra hygge opgave ;)
+Skriv nogle kommentarer ned til hvad du synes om opgaven
+    - Hvad kunne den mangle?
+    - Hvor kunne den forbedres?
+    - Andre kommentarer du synes kunne være relevante

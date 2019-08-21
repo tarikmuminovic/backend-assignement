@@ -12,7 +12,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 class CarController extends FOSRestController {
 
     /**
-     * @Get("/all")
+     * @Get("")
      */
     public function getCars() {
         return $this->view("Not implemented yet");
