@@ -1,11 +1,3 @@
-build:
-	cp -f ./nginx/Dockerfile .
-	docker build -t test-nginx .
-	rm -f Dockerfile
-	cp -f ./php-fpm/Dockerfile .
-	docker build -t test-php .
-	rm -f Dockerfile
-	
 composer-install:
 	docker-compose run php bash -c "cd /app/ext; composer install"
 
