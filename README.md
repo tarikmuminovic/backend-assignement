@@ -1,16 +1,26 @@
-# UNIwise backend opgave:
+# Setup
+## Virtual Machine (VM)
+* Install VMWare Player / Fusion:  
+    * Windows / Linux: https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html
+    * MacOS: https://www.vmware.com/products/fusion/fusion-evaluation.html
 
-Opgaven går ud på at vise basal forståelse for nogle af de frameworks vi anvender hos UNIwise. Mere specifikt er det to PHP frameworks: Doctrine og Symfony. 
+* Download the compressed VM image: https://wf-setup.s3-eu-west-1.amazonaws.com/developer/assignments/backend/backend-test.zip
 
-Kort fortalt bruges Doctrine til at beskrive database entities og håndtere kommunikationen til databasen. Symfony anvendes til at opbygge API’er og services. 
+* Unzip the contents to a folder on your local machine
 
-For at løse opgaven skal følgende være installeret på computeren: 
-```
-Docker
-Docker-compose
-```
+* Open the 'backend-test/backed-test.vmx' file in VMWare Player/Fusion.
+* When prompted, press the 'I copied it' button.
 
-## Installation af Docker:
+* The VM should now resume a previous state with the test environment running and the project opened in VS Code.
+* You should be able to complete your assignment with tools provided in the VM, but feel free to install other tools to your liking.
+
+Good luck :)
+
+PS: The password for the 'developer' user is 'test'
+
+## Local machine (in danish)
+
+### Installation af Docker
 Mac:
 
 “Docker for Mac” kan downloades fra: 
@@ -47,12 +57,25 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo apt-get install -y make
 ```
 
-## Opsætning: 
+### Opsætning: 
 1. Hent projektet fra git (git clone https://github.com/UNIwise/backend-assignment.git)
 2. Gå ind i src mappen og kør: make build
 3. Kør: make run
 4. Åben [http://localhost/car](http://localhost/car) det er her opgaven begynder :)
   
+
+# Assignment (in danish):
+
+Opgaven går ud på at vise basal forståelse for nogle af de frameworks vi anvender hos UNIwise. Mere specifikt er det to PHP frameworks: Doctrine og Symfony. 
+
+Kort fortalt bruges Doctrine til at beskrive database entities og håndtere kommunikationen til databasen. Symfony anvendes til at opbygge API’er og services. 
+
+For at løse opgaven skal følgende være installeret på computeren: 
+```
+Docker
+Docker-compose
+```
+
 ## Opgaven:
 
 Opgaven går ud på at lave REST endpoints til at arbejde med biler.
