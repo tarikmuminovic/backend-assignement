@@ -57,14 +57,14 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo apt-get install -y make
 ```
 
-### Opsætning: 
+### Opsætning
 1. Hent projektet fra git (git clone https://github.com/UNIwise/backend-assignment.git)
 2. Gå ind i src mappen og kør: make build
 3. Kør: make run
 4. Åben [http://localhost/car](http://localhost/car) det er her opgaven begynder :)
   
 
-# Assignment (in danish):
+# Assignment (in danish)
 
 Opgaven går ud på at vise basal forståelse for nogle af de frameworks vi anvender hos UNIwise. Mere specifikt er det to PHP frameworks: Doctrine og Symfony. 
 
@@ -76,7 +76,7 @@ Docker
 Docker-compose
 ```
 
-## Opgaven:
+## Opgaven
 
 Opgaven går ud på at lave REST endpoints til at arbejde med biler.
 Bilerne skal have mærke, model, farve, benzin-niveau og en liste af ekstra udstyr.
