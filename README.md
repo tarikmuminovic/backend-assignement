@@ -85,7 +85,7 @@ Der skal være endpoints til at liste alle bilerne fra databasen.
 Lave en filtreret visning af bilerne. Det kunne fx være en filtrering på et givet equipment eller lignende 
 samt muligheden for at tilføje og fjerne ekstra udstyr fra bilerne.
 
-Enpoints skal returnere json og skal kunne testes via fx. postman. Det er ikke nødvendigt at lave en ui til opgaven da fokus er på backenden.
+Endpoints skal returnere json og skal kunne testes via fx. postman. Det er ikke nødvendigt at lave en ui til opgaven da fokus er på backenden.
 
 Der er en mysql database i docker instansen som kan nåes på localhost:3306 med bruger wiseflow og kode test.
 Brug doctrine til at beskrive entities i databasen.
