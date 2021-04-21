@@ -1,4 +1,39 @@
+# Assignment
+
+The assignment is intended to assist us in assessing your abilities to design solid architectures and write the code to support these.
+The assignment should open up for discssuions in varous topics like testing, scalability, performance, maintainability, extendability etc..
+
+
+The aim of the assigment is to make some REST endpoints to work with cars.
+The cars have a brand, model, color, gas economy and a list of extra accessories.
+
+There should be an endpoint to list all cars from the database
+There should be an endpoint to filter the view of the cars and sort them. 
+It should be possible to filter and sort on various things like equipment
+
+The endpoint should return JSON. It's not the aim of the assignment to make any UI
+
+
+There's a mysql database in the docker instance that is reachable on localhost:3306 with user: wiseflow and password: test.
+
+The intention is to use doctrine to describe entities in the database.
+
+However, the important focus is not necessarily on the frameworks, but on. For the record two of the PHP frameworks we currently use are: Doctrine og Symfony. 
+
+
+
+When entities are create the following command can be run to create/update tables in database:
+1) Make run .
+
+
 # Setup
+
+For at løse opgaven skal følgende være installeret på computeren: 
+```
+Docker
+Docker-compose
+```
+
 ## Virtual Machine (VM)
 * Install VMWare Player / Fusion:  
     * Windows / Linux: https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html
@@ -18,9 +53,7 @@ Good luck :)
 
 PS: The password for the 'developer' user is 'test'
 
-## Local machine (in danish)
-
-### Installation af Docker
+### Install Docker
 Mac:
 
 “Docker for Mac” kan downloades fra: 
@@ -57,47 +90,8 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo apt-get install -y make
 ```
 
-### Opsætning
-1. Hent projektet fra git (git clone https://github.com/UNIwise/backend-assignment.git)
-2. Gå ind i src mappen og kør: make build
-3. Kør: make run
-4. Åben [http://localhost/car](http://localhost/car) det er her opgaven begynder :)
+### Setup
+1. Get the project from git (git clone https://github.com/UNIwise/backend-assignment.git) or download the zip file
+2. Navigate into the src foler and run: make build
+3. Open [http://localhost/car](http://localhost/car) this is where the assignment starts. Enjoy :)
   
-
-# Assignment (in danish)
-
-Opgaven går ud på at vise basal forståelse for nogle af de frameworks vi anvender hos UNIwise. Mere specifikt er det to PHP frameworks: Doctrine og Symfony. 
-
-Kort fortalt bruges Doctrine til at beskrive database entities og håndtere kommunikationen til databasen. Symfony anvendes til at opbygge API’er og services. 
-
-For at løse opgaven skal følgende være installeret på computeren: 
-```
-Docker
-Docker-compose
-```
-
-## Opgaven
-
-Opgaven går ud på at lave REST endpoints til at arbejde med biler.
-Bilerne skal have mærke, model, farve, benzin-niveau og en liste af ekstra udstyr.
-
-Der skal være endpoints til at liste alle bilerne fra databasen.
-Lave en filtreret visning af bilerne. Det kunne fx være en filtrering på et givet equipment eller lignende 
-samt muligheden for at tilføje og fjerne ekstra udstyr fra bilerne.
-
-Endpoints skal returnere json og skal kunne testes via fx. postman. Det er ikke nødvendigt at lave en ui til opgaven da fokus er på backenden.
-
-Der er en mysql database i docker instansen som kan nåes på localhost:3306 med bruger wiseflow og kode test.
-Brug doctrine til at beskrive entities i databasen.
-
-Der kan læses om mapping på: 
-https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html#many-to-many-unidirectional
-
-Når entities er oprettet, skal følgende kommando køres for at tabellerene oprettes/opdateres i databasen:
-1) Make run (sørger for at tilføje de nye tabeller i databasen).
-
-## Ekstra hygge opgave ;)
-Skriv nogle kommentarer ned til hvad du synes om opgaven
-    - Hvad kunne den mangle?
-    - Hvor kunne den forbedres?
-    - Andre kommentarer du synes kunne være relevante
