@@ -28,7 +28,7 @@ When entities are create the following command can be run to create/update table
 
 # Setup
 
-For at løse opgaven skal følgende være installeret på computeren: 
+To have the system up and running the following should be installed on the computer: 
 ```
 Docker
 Docker-compose
