@@ -56,10 +56,10 @@ PS: The password for the 'developer' user is 'test'
 ### Install Docker
 Mac:
 
-“Docker for Mac” kan downloades fra: 
+“Docker for Mac” can be downloaded from: 
 [https://docs.docker.com/docker-for-mac/install/](https://docs.docker.com/docker-for-mac/install/)
 
-"Docker for Mac" indeholder både Docker og Docker-compose 
+"Docker for Mac" contains both Docker and Docker-compose 
 
 Ubuntu: 
 
