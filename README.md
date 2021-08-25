@@ -22,11 +22,11 @@ However, the important focus is not necessarily on the frameworks, but on. For t
 
 
 
+# Setup (this is not required for the interview/test)
+
 When entities are create the following command can be run to create/update tables in database:
 1) Make run .
 
-
-# Setup
 
 To have the system up and running the following should be installed on the computer: 
 ```
