@@ -27,4 +27,4 @@ services:
             dockerfile: nginx/Dockerfile
         image: test-nginx:latest
         ports:
-            - 80:80
+            - 8081:80
