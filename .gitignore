@@ -1,4 +1,5 @@
 .idea
 data/*
 src/app/ext/vendor/*
+src/app/Uniwise/Symfony/bootstrap.php.cache
 cache/*

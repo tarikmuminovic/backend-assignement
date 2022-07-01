@@ -1,7 +1,7 @@
 <?php
 namespace Uniwise\Symfony\Service;
 
-class TestService {
+class CarService {
     public function helloWorld() {
         return "hello world";
     }
