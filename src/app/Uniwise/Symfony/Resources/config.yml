@@ -25,10 +25,10 @@ doctrine:
     default_connection: default
     connections:
       default:
-       driver: 'pdo_mysql'
-       server_version: '5.7'
-       charset: utf8mb4
-       url: '%env(DATABASE_URL)%'
+        driver: 'pdo_mysql'
+        server_version: '5.7'
+        charset: utf8mb4
+        url: '%env(DATABASE_URL)%'
 
   orm:
     auto_generate_proxy_classes: "%kernel.debug%"
@@ -62,22 +62,25 @@ fos_rest:
       - { path: ^/, priorities: [ json ], fallback_format: json, prefer_extension: true }
 
 services:
-
   _defaults:
     autowire: true
     autoconfigure: true
     public: false
 
+  # Service
   Uniwise\Symfony\Service\:
     resource: '/app/Uniwise/Symfony/Service/*'
     public: true
 
-  Uniwise\Symfony\Bundle\:
-    resource: '/app/Uniwise/Symfony/Bundle/*'
-    tags: ['controller.service_arguments']
+  #Controller
+  Uniwise\Symfony\Bundle\ApiBundle\Controller\:
+    resource: '/app/Uniwise/Symfony/Bundle/ApiBundle/Controller/*'
+    tags: [ 'controller.service_arguments' ]
     calls:
-      - [setContainer, ["@service_container"]]
+      - [ setContainer, [ "@service_container" ] ]
 
+  #Repository
   Uniwise\Doctrine\Entity\:
     resource: '/app/Uniwise/Doctrine/Entity/*'
     public: true
+    exclude: [ '/app/Uniwise/Doctrine/Entity/Car.php' ]
