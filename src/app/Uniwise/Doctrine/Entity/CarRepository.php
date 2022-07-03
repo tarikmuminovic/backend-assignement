@@ -12,11 +12,17 @@ use Uniwise\Doctrine\Query\GetCarsParams;
 class CarRepository extends ServiceEntityRepository
 {
     /**
+     * @var array|string[]
+     */
+    private $fields;
+
+    /**
      * @param ManagerRegistry $registry
      */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Car::class);
+        $this->fields = $this->getEntityFields(Car::class);
     }
 
     /**
@@ -96,14 +102,22 @@ class CarRepository extends ServiceEntityRepository
         $dql = "";
         if (
             $params->hasSortBy() &&
-            $this->_em->getClassMetadata(Car::class)->hasField($params->getSortBy())
+            isset($this->fields[$params->getSortBy()])
         ) {
-            $sortBySafe = $this->_em->getClassMetadata(Car::class)->getReflectionProperty($params->getSortBy());
-            $dql .= " ORDER BY c." . $sortBySafe->getName() . " ";
+            $sortBySafe = $this->fields[$params->getSortBy()];
+            $dql .= " ORDER BY c." . $sortBySafe . " ";
             if ($params->hasSortType()) {
                 $dql .= " " . $params->getSortType()->getValue();
             }
         }
         return $dql;
+    }
+
+    private function getEntityFields(string $entityClass): array
+    {
+        $reflectionProps = $this->_em->getClassMetadata($entityClass)->getReflectionProperties();
+        return array_map(function ($property) {
+            return $property->getName();
+        }, $reflectionProps);
     }
 }
