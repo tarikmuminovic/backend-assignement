@@ -1,0 +1,155 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Cars API documentation",
+    "description": "Cars API documentation",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8081"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "GetAllCarsResult": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Car"
+        }
+      },
+      "Car": {
+        "type": "object",
+        "required": [
+          "brand",
+          "model",
+          "color",
+          "gasEconomy",
+          "extraAccessories"
+        ],
+        "properties": {
+          "brand": {
+            "type": "string",
+            "example": "BMW"
+          },
+          "model": {
+            "type": "string",
+            "example": "X6"
+          },
+          "color": {
+            "type": "string",
+            "example": "Red"
+          },
+          "gasEconomy": {
+            "type": "number",
+            "example": 55.6
+          },
+          "extraAccessories": {
+            "type": "object",
+            "example": {
+              "extraAccessory1": "extraAccessory1",
+              "extraAccessory2": "extraAccessory2"
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/cars": {
+      "get": {
+        "tags": [
+          "Get cars"
+        ],
+        "summary": "Get all cars with optional filtering and sorting.",
+        "operationId": "getAllCars",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "brands",
+            "schema": {
+              "type": "string",
+              "example": "Bmw,Mercedes,Audi"
+            },
+            "required": false,
+            "description": "List of car brands used as filter"
+          },
+          {
+            "in": "query",
+            "name": "models",
+            "schema": {
+              "type": "string",
+              "example": "X5,X6,A7"
+            },
+            "required": false,
+            "description": "List of car models used as filter"
+          },
+          {
+            "in": "query",
+            "name": "brands",
+            "schema": {
+              "type": "string",
+              "example": "Red,Blue"
+            },
+            "required": false,
+            "description": "List of car colors used as filter"
+          },
+          {
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "type": "string",
+              "example": "brand"
+            },
+            "required": false,
+            "description": "Field name used for sorting"
+          },
+          {
+            "in": "query",
+            "name": "sortType",
+            "schema": {
+              "type": "string",
+              "enum": ["ASC", "DESC"]
+            },
+            "required": false,
+            "description": "Sort type"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "example": 20
+            },
+            "required": false,
+            "description": "Query limit"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "example": 0
+            },
+            "required": false,
+            "description": "Query offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllCarsResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
