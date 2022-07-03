@@ -113,6 +113,10 @@ class CarRepository extends ServiceEntityRepository
         return $dql;
     }
 
+    /**
+     * @param string $entityClass
+     * @return array|string[]
+     */
     private function getEntityFields(string $entityClass): array
     {
         $reflectionProps = $this->_em->getClassMetadata($entityClass)->getReflectionProperties();
