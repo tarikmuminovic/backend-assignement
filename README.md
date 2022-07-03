@@ -1,3 +1,42 @@
+# Assignment completed 
+
+- Exposed only one endpoint (http://localhost:8081/cars) to get all cars safely with limit and filter or sort them optionally
+- Filter cars by multiple selections OR related of multiple filters AND related (example: "Give me cars with brand BMW or Mercedes colored Red or Green that have max gas economy of 55.6 MPG"):
+- Sort ascending and descending by all fields
+- Applies limit and offset (maximum allowed limit set to 100)
+- OpenApi spec can be found in src/docs/public.json
+- Example of unit test
+
+### Curls to get all cars
+
+Curl example of getting all cars without filters and default limit(20) & offset(0): 
+``` 
+curl --location --request GET 'http://localhost:8081/cars'
+``` 
+Curl example of getting all cars with filters and custom sort, limit & offset: 
+``` 
+curl --location --request GET 'http://localhost:8081/cars?brands=Mercedes,Bmw&colors=Red,Green&limit=50&minGasEconomy=1&maxGasEconomy=111&sortBy=gasEconomy&sortType=DESC'
+``` 
+
+Note: feed database with some random Car data before trying out API
+
+### Run tests
+
+To run tests run following:
+``` 
+docker exec -it [YOUR_PHP_FPM_CONTAINER_ID] bash
+``` 
+navigate to src/ directory
+``` 
+app/ext/vendor/phpunit/phpunit/phpunit [PATH_TO_TEST]
+``` 
+
+### Further steps
+
+- Columns more frequently used as filters are good candidates for indexing and should be on top of where clause
+- Apply rate limiting to GET Cars API
+
+
 # Assignment
 
 The assignment is intended to assist us in assessing your abilities to design solid architectures and write the code to support these.
