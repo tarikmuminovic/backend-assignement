@@ -1,19 +1,109 @@
 <?php
+declare(strict_types=1);
+
 namespace Uniwise\Doctrine\Entity;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\DBAL\Types\Type;
+use Doctrine\ORM\Query;
+use Uniwise\Doctrine\Query\GetCarsParams;
 
-class CarRepository extends ServiceEntityRepository {
-
-    public function __construct(ManagerRegistry $registry) {
+class CarRepository extends ServiceEntityRepository
+{
+    /**
+     * @param ManagerRegistry $registry
+     */
+    public function __construct(ManagerRegistry $registry)
+    {
         parent::__construct($registry, Car::class);
     }
 
     /**
+     * @param GetCarsParams $params
      * @return array|Car[]
      */
-    public function getAll() {
-        return $this->findAll();
+    public function getAll(GetCarsParams $params): array
+    {
+        $dql = "SELECT c FROM Uniwise\Doctrine\Entity\Car c ";
+        $dql .= $this->createFiltersForGetAll($params);
+        $dql .= $this->createSort($params);
+
+        $query = $this->_em->createQuery($dql);
+        $this->setFiltersForGetAll($query, $params);
+        $query->setMaxResults($params->getLimit());
+        $query->setFirstResult($params->getOffset());
+
+        return $query->execute();
+    }
+
+    /**
+     * @param GetCarsParams $params
+     * @return string
+     */
+    private function createFiltersForGetAll(GetCarsParams $params): string
+    {
+        $dql = " WHERE 1=1 ";
+
+        if ($params->hasBrands()) {
+            $dql .= " AND c.brand IN (:brands)";
+        }
+        if ($params->hasModels()) {
+            $dql .= " AND c.model IN (:models)";
+        }
+        if ($params->hasColors()) {
+            $dql .= " AND c.color IN (:colors)";
+        }
+        if ($params->hasMinGasEconomy()) {
+            $dql .= " AND c.gasEconomy >= :minGasEconomy";
+        }
+        if ($params->hasMaxGasEconomy()) {
+            $dql .= " AND c.gasEconomy <= :maxGasEconomy";
+        }
+
+        return $dql;
+    }
+
+    /**
+     * @param Query $query
+     * @param GetCarsParams $params
+     */
+    private function setFiltersForGetAll(Query $query, GetCarsParams $params): void
+    {
+        if ($params->hasBrands()) {
+            $query->setParameter("brands", $params->getBrands());
+        }
+        if ($params->hasModels()) {
+            $query->setParameter("models", $params->getModels());
+        }
+        if ($params->hasColors()) {
+            $query->setParameter("colors", $params->getColors());
+        }
+        if ($params->hasMinGasEconomy()) {
+            $query->setParameter("minGasEconomy", $params->getMinGasEconomy(), Type::FLOAT);
+        }
+        if ($params->hasMaxGasEconomy()) {
+            $query->setParameter("maxGasEconomy", $params->getMaxGasEconomy(), Type::FLOAT);
+        }
+    }
+
+    /**
+     * @param GetCarsParams $params
+     * @return string
+     */
+    private function createSort(GetCarsParams $params): string
+    {
+        $dql = "";
+        if (
+            $params->hasSortBy() &&
+            $this->_em->getClassMetadata(Car::class)->hasField($params->getSortBy())
+        ) {
+            $sortBySafe = $this->_em->getClassMetadata(Car::class)->getReflectionProperty($params->getSortBy());
+            $dql .= " ORDER BY c." . $sortBySafe->getName() . " ";
+            if ($params->hasSortType()) {
+                $dql .= " " . $params->getSortType()->getValue();
+            }
+        }
+        return $dql;
     }
 }
