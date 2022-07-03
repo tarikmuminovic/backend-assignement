@@ -47,21 +47,14 @@ class CarService
         $brands = $request->brands != null ? explode(",", $request->brands) : [];
         $models = $request->models != null ? explode(",", $request->models) : [];
         $colors = $request->colors != null ? explode(",", $request->colors) : [];
-        $minGasEconomy = $request->minGasEconomy;
-        $maxGasEconomy = $request->maxGasEconomy;
-
-        $sortBy = $request->sortBy;
-        $sortType = $request->sortType;
-        $limit = $request->limit;
-        $offset = $request->offset;
 
         return (new GetCarsParams())
             ->setBrandsFilter($brands)
             ->setModelsFilter($models)
             ->setColorsFilter($colors)
-            ->setGasEconomyFilter($minGasEconomy, $maxGasEconomy)
-            ->setSort($sortBy, $sortType)
-            ->setLimit($limit)
-            ->setOffset($offset);
+            ->setGasEconomyFilter($request->minGasEconomy, $request->maxGasEconomy)
+            ->setSort($request->sortBy, $request->sortType)
+            ->setLimit($request->limit)
+            ->setOffset($request->offset);
     }
 }
