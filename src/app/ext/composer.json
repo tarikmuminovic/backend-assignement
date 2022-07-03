@@ -9,7 +9,8 @@
     "sensio/framework-extra-bundle": "4.0.*",
     "jms/serializer-bundle": "2.4.*",
     "jms/aop-bundle": "1.3.0",
-    "marc-mabe/php-enum": "4.*"
+    "marc-mabe/php-enum": "4.*",
+    "phpunit/phpunit": "8.*"
   },
   "autoload": {
     "psr-0": {
